@@ -60,6 +60,18 @@ function Allcharacters(props) {
             </div>
         )
     }
+    if (main === 0 && minor === 0 && ruler === 1 && evil === 0){
+        return (
+            <div className='character-row'>
+                {/*eslint-disable-next-line*/}
+                <img src={props.Image} alt="Character picture" />
+                <div className="character-row__text">
+                <p className="name"> {props.Name} </p>
+                <p className="ruler"> Королевская власть </p>
+                </div>
+            </div>
+        )
+    }
     if (main === 1 && minor === 0 && ruler === 1 && evil === 0){
         return (
             <div className='character-row'>
