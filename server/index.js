@@ -10,7 +10,7 @@ const db = mysql.createPool({
     host: "localhost",
     user: "root",
     database: "adventuretime",
-    password: "Joker4753."
+    password: "Joker4753"
 });
 
 
@@ -23,6 +23,14 @@ app.get('/allcharacters', (req, res) => {
     })
 })
 
+app.get('/maincharacters', (req, res) => {
+    db.query("SELECT * FROM maincharacters", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
 
 
 app.listen(3001, () => {

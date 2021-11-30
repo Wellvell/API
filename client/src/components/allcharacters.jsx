@@ -1,6 +1,4 @@
 
-
-
 function Allcharacters(props) {
 
     let main = 0;
