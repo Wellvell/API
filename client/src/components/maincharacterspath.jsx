@@ -1,6 +1,6 @@
 import Maincharacters from './maincharacters';
 import Axios from 'axios'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import arrowLeft from './img/arrow-left.png';
 import arrowRight from './img/arrow-right.png';
 
@@ -9,12 +9,12 @@ function MaincharactersPath(){
     const [CharactersList, SetCharactersList] = useState([]);
     const [index, setIndex] = useState(0);
 
-    const getMainCharacters = () => {
-    Axios.get('http://localhost:3001/maincharacters').then((response) => 
-    {
-        SetCharactersList(response.data);
-    });
-    }
+    useEffect(()=>{
+        Axios.get('http://localhost:3001/maincharacters').then((response) => 
+        {
+            SetCharactersList(response.data);
+        });
+    },[]);
 
     const slideLeft = () => {
         setIndex(index - 1);
@@ -27,9 +27,6 @@ function MaincharactersPath(){
 
     return(
         <div className="App__container__cards">
-            {   
-                getMainCharacters()
-            }
             {
                 CharactersList.length > 0 && (
                     <div className="card-container">
