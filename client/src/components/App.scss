@@ -123,21 +123,16 @@ $yellow: rgb(255, 215, 58);
             }
 
             &__btn6:hover {
-                box-shadow: 0 0 0 2px white, 0 0 0 4px $brown;
-                background-color: $brown;
-            }
-
-            &__btn7:hover {
                 box-shadow: 0 0 0 2px white, 0 0 0 4px $light-grey-blue;
                 background-color: $light-grey-blue;
             }
 
-            &__btn8:hover {
+            &__btn7:hover {
                 box-shadow: 0 0 0 2px white, 0 0 0 4px $bej;
                 background-color: $bej;
             }
 
-            &__btn9:hover {
+            &__btn8:hover {
                 box-shadow: 0 0 0 2px white, 0 0 0 4px $yellow;
                 background-color: $yellow;
             }
