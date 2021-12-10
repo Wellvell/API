@@ -3,7 +3,6 @@ import './normalize.css';
 import AllcharactersPath from './components/allcharacterspath';
 import MaincharactersPath from './components/maincharacterspath';
 import './components/allcharacters';
-import './components/allcharacters.scss';
 import {
   BrowserRouter,
   Routes,

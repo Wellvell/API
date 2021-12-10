@@ -36,10 +36,28 @@ function MaincharactersPath(){
     };
 
     const letsSearch = () =>{
-        if (searchTerm === 'Боннибель')
+        if (searchTerm === 'Боннибель' || searchTerm === 'Принцесса Жвачка' || searchTerm === 'ПЖ' || searchTerm === 'Бонни')
             setWord('Bonnie');
-        if (searchTerm === 'Финн Мёртенс')
+        if (searchTerm === 'Финн Мёртенс'|| searchTerm === 'Финн')
             setWord('Finn');
+        if (searchTerm === 'Бетти Гроф' || searchTerm === 'Бетти')
+            setWord('Betty');
+        if (searchTerm === 'БиМО')
+            setWord('BMO');
+        if (searchTerm === 'Джейк')
+            setWord('Jake');
+        if (searchTerm === 'Леди Ливнерог' || searchTerm === 'Леди')
+            setWord('Lady');
+        if (searchTerm === 'Ледяной Король')
+            setWord('IceKing');
+        if (searchTerm === 'Марселин Абадир' || searchTerm === 'Марселин')
+            setWord('Marselin');
+        if (searchTerm === 'Принцесса Пламя (Фиби)' || searchTerm === 'Фиби'  || searchTerm === 'Принцесса Пламя')
+            setWord('Phibie');
+        if (searchTerm === 'Принцесса Пупырчатого Королевства' || searchTerm === 'ППК')
+            setWord('PPK');
+        if (searchTerm === 'Саймон Петриков' || searchTerm === 'Саймон')
+            setWord('Saimon');
     }
 
     useEffect(() => {
