@@ -1,4 +1,5 @@
 import Allcharacters from './allcharacters';
+import Descript from './descript';
 import Axios from 'axios'
 import { useEffect, useState } from 'react';
 import filter from './img/filter.png';
@@ -8,8 +9,9 @@ function AllcharactersPath(){
 
     const [CharactersList, setCharactersList] = useState([]);
     const [getFilter, setGetFilter] = useState(false);
-    const [getSex, setGetSex] = useState("");
-    const [getRace, setGetRace] = useState("");
+    const [getSex, setGetSex] = useState("1");
+    const [getRace, setGetRace] = useState("2");
+    const [getDescript, setGetDescript] = useState([]);
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/allcharacters').then((response) => 
@@ -39,23 +41,37 @@ function AllcharactersPath(){
             {
                 setCharactersList(response.data)
             });
+            Axios.get(`http://localhost:3001/DeskriptRace=${value}`).then((response) => 
+            {
+                setGetDescript(response.data);
+                
+            });
+        }
+        else{
+            setGetDescript("")
         }
     }
 
     useEffect(() => {
-        if (getSex !== "1" && getRace !== "2" && getSex !== "" && getRace !== ""){
+        if (getSex !== "1" && getRace !== "2"){
             Axios.get(`http://localhost:3001/Sex=${getSex}/Race=${getRace}`).then((response) => 
             {
                 setCharactersList(response.data)
+            }
+            ).catch ( (error) => {
+                alert("Таких персонажей не существует!");
+                setGetSex("1");
+                setGetRace("2");
             });
         }
         else if (getSex === "1" && getRace === "2"){
             Axios.get('http://localhost:3001/allcharacters').then((response) => 
-        {
-            setCharactersList(response.data)
-        });
+            {
+                setCharactersList(response.data)
+            });     
         }
     }, [getSex, getRace])
+
 
     return(
         <div>
@@ -65,24 +81,31 @@ function AllcharactersPath(){
             {
                 getFilter && (
                     <div className="select-container">
-                        <select defaultValue="Выберите пол" onChange={(event) => funcSex(event.target.value)}>
+                        <select defaultValue="Выберите пол" value={getSex} onChange={(event) => funcSex(event.target.value)}>
                             <option value="1"> Выберите пол </option>
                             <option value="Female" > Женский </option>
                             <option value="Male" > Мужской </option>
                             <option value="No" > Бесполый </option>
                         </select>
-                        <select defaultValue="Выберите расу" onChange={(event) => funcRace(event.target.value)}>
+                        <select defaultValue="Выберите расу" value={getRace} onChange={(event) => funcRace(event.target.value)}>
                             <option value="2"> Выберите расу</option>
+                            <option value="Banana" > Бананы </option>
                             <option value="Vampires" > Вампиры </option>
+                            <option value="Wolfes"> Волки </option>
                             <option value="Magic" > Волшебники </option>
                             <option value="CandyPeople" > Конфетный народ </option>
                             <option value="SpaceThing" > Космическая сущность </option>
                             <option value="People" > Люди </option>
+                            <option value="Mars" > Марсианин </option>
+                            <option value="None" > Неизвестно </option>
+                            <option value="Orgalorg" > Оргалорг </option>
                             <option value="Fire" > Пламенный народ </option>
                             <option value="Lumpy" > Пупырчатые люди </option>
                             <option value="Rainicorns" > Радугарог </option>
                             <option value="MOs" > Роботы МО </option>
+                            <option value="Elephant" > Слон </option>
                             <option value="Dogs" > Собака </option>
+                            <option value="Peoplebutnot" > Человекоподобные </option>
                         </select>
                     </div>
                 )
@@ -99,6 +122,17 @@ function AllcharactersPath(){
                 </Allcharacters>
                 )
             }
+            </div>
+            <div>
+                {
+                    getDescript &&
+                    getDescript.map((value) =>
+                    <Descript
+                    key = {value.Descript}
+                    Descript = {value.Descript}>
+                    </Descript>
+                    )
+                }
             </div>
         </div>
     )

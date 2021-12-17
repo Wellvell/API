@@ -28,8 +28,6 @@ function App() {
               <button className="App__container__category__btn3">Второстепенные персонажи</button>
               <button className="App__container__category__btn4">Королевская власть</button>
               <button className="App__container__category__btn5">Злодеи</button>
-              <button className="App__container__category__btn6">Расы</button>
-              <button className="App__container__category__btn7">Места</button>
               <button className="App__container__category__btn8">Эпизоды</button>
           </div>
           <Routes>
