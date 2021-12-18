@@ -62,13 +62,19 @@ function AllcharactersPath(){
                 alert("Таких персонажей не существует!");
                 setGetSex("1");
                 setGetRace("2");
+                Axios.get('http://localhost:3001/allcharacters').then((response) => 
+                {
+                    setCharactersList(response.data)
+                });
+                setGetDescript([]);
             });
         }
         else if (getSex === "1" && getRace === "2"){
             Axios.get('http://localhost:3001/allcharacters').then((response) => 
             {
                 setCharactersList(response.data)
-            });     
+            });
+            setGetDescript([]);     
         }
     }, [getSex, getRace])
 
@@ -93,8 +99,11 @@ function AllcharactersPath(){
                             <option value="Vampires" > Вампиры </option>
                             <option value="Wolfes"> Волки </option>
                             <option value="Magic" > Волшебники </option>
+                            <option value="Demons" > Демоны </option>
+                            <option value="BreakfastP" > Завтрачные люди </option>
                             <option value="CandyPeople" > Конфетный народ </option>
                             <option value="SpaceThing" > Космическая сущность </option>
+                            <option value="Lemons" > Лимонные люди </option>
                             <option value="People" > Люди </option>
                             <option value="Mars" > Марсианин </option>
                             <option value="None" > Неизвестно </option>
@@ -103,9 +112,13 @@ function AllcharactersPath(){
                             <option value="Lumpy" > Пупырчатые люди </option>
                             <option value="Rainicorns" > Радугарог </option>
                             <option value="MOs" > Роботы МО </option>
+                            <option value="Rusalky" > Русалки </option>
+                            <option value="Slime" > Слизь </option>
                             <option value="Elephant" > Слон </option>
                             <option value="Dogs" > Собака </option>
                             <option value="Peoplebutnot" > Человекоподобные </option>
+                            <option value="Tortle" > Черепаший народ </option>
+                            <option value="Wellberry" > Ягодный народ </option>
                         </select>
                     </div>
                 )

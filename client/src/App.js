@@ -2,6 +2,8 @@ import './components/App.scss';
 import './normalize.css';
 import AllcharactersPath from './components/allcharacterspath';
 import MaincharactersPath from './components/maincharacterspath';
+import MinorcharactersPath from './components/minorcharacterspath';
+import EvilsPath from './components/evilspath';
 import './components/allcharacters';
 import {
   BrowserRouter,
@@ -25,14 +27,15 @@ function App() {
               Выберите категорию поиска:
               <Link to="/allcharacters"><button className="App__container__category__btn1">Все персонажи</button></Link>
               <Link to="/maincharacters"><button className="App__container__category__btn2">Главные герои</button></Link>
-              <button className="App__container__category__btn3">Второстепенные персонажи</button>
-              <button className="App__container__category__btn4">Королевская власть</button>
-              <button className="App__container__category__btn5">Злодеи</button>
-              <button className="App__container__category__btn8">Эпизоды</button>
+              <Link to="/evils"><button className="App__container__category__btn5">Злодеи</button></Link>
+              <Link to="/minorcharacters"><button className="App__container__category__btn3">Второстепенные персонажи</button></Link>
+              <button className="App__container__category__btn4">Места</button>
           </div>
           <Routes>
             <Route path="/allcharacters" element={<AllcharactersPath/>}/>
             <Route path="/maincharacters" element={<MaincharactersPath/>}/>
+            <Route path="/minorcharacters" element={<MinorcharactersPath/>}/>
+            <Route path="/evils" element={<EvilsPath/>}/>
           </Routes>
         </div>
       </div >

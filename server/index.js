@@ -35,6 +35,228 @@ app.get('/maincharacters', (req, res) => {
     })
 })
 
+app.get('/minorcharacters', (req, res) => {
+    db.query("SELECT * FROM minorcharacters", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/evils', (req, res) => {
+    db.query("SELECT * FROM villains", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+////////////////////////////////Способности//////////////////////////////////////////
+
+app.get('/Abilities=1', (req, res) => {
+    db.query("SELECT * FROM villains WHERE Abilities = 'Интеллектуальные'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Abilities=2', (req, res) => {
+    db.query("SELECT * FROM villains WHERE Abilities = 'Магические'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Abilities=3', (req, res) => {
+    db.query("SELECT * FROM villains WHERE Abilities = 'Физические'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+///////////////////////////////Сезоны//////////////////////////////////////////
+
+app.get('/Season=1', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '1'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=2', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '2'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=3', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '3'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=4', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '4'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=5', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '5'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=6', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '6'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=7', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '7'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=8', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '8'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=9', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '9'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Season=10', (req, res) => {
+    db.query("SELECT * FROM minorcharacters WHERE Season = '10'", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+///////////////////////////////Эпизоды//////////////////////////////////////////
+
+app.get('/Episode=0', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Адское пламя' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=1', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Весёлые секреты, Часть 2' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=2', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Время Бизнеса' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=3', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Заварушка на пирушке' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=4', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Заложники любви' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=5', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Изгнаны!' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=6', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Неладно что-то в Пупырчатом Королевстве' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=7', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Пойдём со мной' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Episode=8', (req, res) => {
+    db.query("SELECT * FROM episodes WHERE Name = 'Три ведра' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
 //////////////////////////////пол////////////////////////////////////////
 
 app.get('/Sex=Female', (req, res) => {
@@ -220,6 +442,70 @@ app.get('/Race=Peoplebutnot', (req, res) => {
     })
 })
 
+app.get('/Race=Demons', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Демоны' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Race=BreakfastP', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Завтрачные люди' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Race=Lemons', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Лимонные люди' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Race=Rusalky', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Русалки' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Race=Slime', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Слизь' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Race=Tortle', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Черепаший народ' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Race=Wellberry', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Race = 'Ягодный народ' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+
 ///////////////////////Описание рас/////////////////////////////////////////
 
 app.get('/DeskriptRace=Magic', (req, res) => {
@@ -375,16 +661,70 @@ app.get('/DeskriptRace=Peoplebutnot', (req, res) => {
     })
 })
 
-//////////////////////Раса + женский пол//////////////////////////////////////////
-
-app.get('/Sex=Female/Race=Magic', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Волшебники'", function (err, data) {
+app.get('/DeskriptRace=Demons', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Демоны' ", function (err, data) {
         if (err) return console.log(err);
         else{
             res.send(data)
         }
     })
 })
+
+app.get('/DeskriptRace=BreakfastP', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Завтрачные люди' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/DeskriptRace=Lemons', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Лимонные люди' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/DeskriptRace=Rusalky', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Русалки' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/DeskriptRace=Slime', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Слизь' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/DeskriptRace=Tortle', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Черепаший народ' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/DeskriptRace=Wellberry', (req, res) => {
+    db.query("SELECT Descript FROM races WHERE Name = 'Ягодный народ' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+//////////////////////Раса + женский пол//////////////////////////////////////////
 
 app.get('/Sex=Female/Race=CandyPeople', (req, res) => {
     db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Конфетный народ'", function (err, data) {
@@ -395,14 +735,6 @@ app.get('/Sex=Female/Race=CandyPeople', (req, res) => {
     })
 })
 
-app.get('/Sex=Female/Race=SpaceThing', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Космическая сущность'", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
 
 app.get('/Sex=Female/Race=Vampires', (req, res) => {
     db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Вампиры'", function (err, data) {
@@ -440,14 +772,6 @@ app.get('/Sex=Female/Race=Rainicorns', (req, res) => {
     })
 })
 
-app.get('/Sex=Female/Race=MOs', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Роботы МО'", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
 
 app.get('/Sex=Female/Race=Dogs', (req, res) => {
     db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Собака'", function (err, data) {
@@ -468,33 +792,6 @@ app.get('/Sex=Female/Race=People', (req, res) => {
 })
 
 
-app.get('/Sex=Female/Race=Banana', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Бананы' ", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
-
-app.get('/Sex=Female/Race=Wolfes', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Волки' ", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
-
-app.get('/Sex=Female/Race=Mars', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Марсианин' ", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
-
 app.get('/Sex=Female/Race=None', (req, res) => {
     db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Неизвестно' ", function (err, data) {
         if (err) return console.log(err);
@@ -504,14 +801,6 @@ app.get('/Sex=Female/Race=None', (req, res) => {
     })
 })
 
-app.get('/Sex=Female/Race=Orgalog', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Оргалорг' ", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
 
 app.get('/Sex=Female/Race=Elephant', (req, res) => {
     db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Слон' ", function (err, data) {
@@ -530,6 +819,54 @@ app.get('/Sex=Female/Race=Peoplebutnot', (req, res) => {
         }
     })
 })
+
+
+app.get('/Sex=Female/Race=BreakfastP', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Завтрачные люди' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+
+app.get('/Sex=Female/Race=Rusalky', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Русалки' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Sex=Female/Race=Slime', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Слизь' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Sex=Female/Race=Tortle', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Черепаший народ' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Sex=Female/Race=Wellberry', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Женский' AND Race = 'Ягодный народ' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
 
 //////////////////////Раса + мужской пол//////////////////////////////////////////
 
@@ -581,33 +918,6 @@ app.get('/Sex=Male/Race=Vampires', (req, res) => {
 
 app.get('/Sex=Male/Race=Fire', (req, res) => {
     db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Пламенный народ'", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
-
-app.get('/Sex=Male/Race=Lumpy', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Пупырчатые люди'", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
-
-app.get('/Sex=Male/Race=Rainicorns', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Радугарог'", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
-        }
-    })
-})
-
-app.get('/Sex=Male/Race=MOs', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Роботы МО'", function (err, data) {
         if (err) return console.log(err);
         else{
             res.send(data)
@@ -669,8 +979,9 @@ app.get('/Sex=Male/Race=Orgalorg', (req, res) => {
     })
 })
 
-app.get('/Sex=Male/Race=Elephant', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Слон' ", function (err, data) {
+
+app.get('/Sex=Male/Race=Peoplebutnot', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Человекоподобные' ", function (err, data) {
         if (err) return console.log(err);
         else{
             res.send(data)
@@ -678,8 +989,18 @@ app.get('/Sex=Male/Race=Elephant', (req, res) => {
     })
 })
 
-app.get('/Sex=Male/Race=Peoplebutnot', (req, res) => {
-    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Человекоподобные' ", function (err, data) {
+app.get('/Sex=Male/Race=Demons', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND Race = 'Демоны' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+
+app.get('/Sex=Male/Race=Lemons', (req, res) => {
+    db.query("SELECT * FROM allcharacters WHERE Sex = 'Мужской' AND  Race = 'Лимонные люди' ", function (err, data) {
         if (err) return console.log(err);
         else{
             res.send(data)
