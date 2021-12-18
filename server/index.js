@@ -53,6 +53,160 @@ app.get('/evils', (req, res) => {
     })
 })
 
+app.get('/place', (req, res) => {
+    db.query("SELECT * FROM places", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+//////////////////////////////////Тип места//////////////////////////////////////////////////////////////////
+app.get('/Type=1', (req, res) => {
+    db.query("SELECT * FROM places WHERE Type = 'Королевство' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/Type=2', (req, res) => {
+    db.query("SELECT * FROM places WHERE Type != 'Королевство' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+///////////////////////////////////Королевская власть картинки/////////////////////////////////////////////////
+app.get('/ImgRuler=1', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Черепаха' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=2', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Великий Мастер Волшебник' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=3', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Граф Лимонохват' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=4', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Боннибель' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=5', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Завтрак' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=6', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Ледяной Король' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=7', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Гроб Гоб Глоб Грод' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=8', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Бог Тусовок' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=9', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Пламя (Фиби)' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=10', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Пупырчатого Королевства' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=11', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Слизь' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=12', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Хот-Дог' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=13', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Принцесса Ягода' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
+app.get('/ImgRuler=14', (req, res) => {
+    db.query("SELECT Image FROM allcharacters WHERE Name = 'Хансон Абадир' ", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
 ////////////////////////////////Способности//////////////////////////////////////////
 
 app.get('/Abilities=1', (req, res) => {
