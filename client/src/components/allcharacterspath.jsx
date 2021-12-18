@@ -12,6 +12,23 @@ function AllcharactersPath(){
     const [getSex, setGetSex] = useState("1");
     const [getRace, setGetRace] = useState("2");
     const [getDescript, setGetDescript] = useState([]);
+    const [password, setPassword] = useState(false);
+
+  const handleChangebutton = () => {
+    let input = prompt("Введите пароль")
+    let str;
+    Axios.get(`http://localhost:3001/administrator`).then((response) => 
+            {
+                str = JSON.stringify(response.data);
+                str = str.slice(13)
+                str = str.slice(1, -3)
+                if (input === str){
+                  setPassword(true)
+                }
+                console.log(password);
+
+            });
+    }
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/allcharacters').then((response) => 
@@ -78,9 +95,14 @@ function AllcharactersPath(){
         }
     }, [getSex, getRace])
 
+    const letsChange = () =>{
+
+    }
+
 
     return(
         <div>
+             <button className="admin-btn" onClick={handleChangebutton}> Я администратор</button>
             <div className="App__container__filteres">
                 <button><img src={filter} alt="Фильтр" onClick={handleChange}></img></button>
             </div>
@@ -131,7 +153,9 @@ function AllcharactersPath(){
                 key = {value.Name}
                 Image = {value.Image}
                 Name = {value.Name}
-                Category = {value.Category}>
+                Category = {value.Category}
+                canChange = {password}
+                change = {letsChange}>   
                 </Allcharacters>
                 )
             }

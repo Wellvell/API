@@ -40,6 +40,15 @@ $yellow: rgb(255, 215, 58);
             }
         }
 
+        .admin-btn{
+            font-size: small;
+            display: flex;
+            position: absolute;
+            font-family: $mainFont;
+            margin-top: -150px;
+            margin-left: 1450px;
+        }
+
         &__cards {
             background-color: rgb(101, 176, 84, 0.7);
             font-family: $mainFont;

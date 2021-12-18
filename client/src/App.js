@@ -6,12 +6,14 @@ import MinorcharactersPath from './components/minorcharacterspath';
 import EvilsPath from './components/evilspath';
 import PlacePath from './components/placepath';
 import './components/allcharacters';
+import Axios from 'axios'
 import {
   BrowserRouter,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import { useState } from 'react';
 
 
 function App() {

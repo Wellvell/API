@@ -62,6 +62,15 @@ app.get('/place', (req, res) => {
     })
 })
 
+app.get('/administrator', (req, res) => {
+    db.query("SELECT password FROM admin", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+        }
+    })
+})
+
 //////////////////////////////////Тип места//////////////////////////////////////////////////////////////////
 app.get('/Type=1', (req, res) => {
     db.query("SELECT * FROM places WHERE Type = 'Королевство' ", function (err, data) {

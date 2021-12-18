@@ -1,6 +1,3 @@
-
-
-
 function Place(props) {
     return (
         <div className='place-card'>
