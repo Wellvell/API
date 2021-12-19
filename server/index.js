@@ -72,6 +72,23 @@ app.put("/minorcharactersUpdate", (req, res) => {
     });
 })
 
+
+app.put("/placeUpdate", (req, res) => {
+    const name = req.body.Name;
+    const ruler = req.body.Ruler;
+    const type = req.body.type;
+    const descript = req.body.Descript;
+    const image = req.body.Image;
+    db.query("UPDATE places SET Name = ?, Ruler = ?, type = ?, Descript = ?  WHERE Image = ?", [name, ruler, type, descript, image], (err, result) => {
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.send(result);
+        }
+    });
+})
+
 ///////////////////////////////////////////////get запросы////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////общие запросы//////////////////////////////////////

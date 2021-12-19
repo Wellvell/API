@@ -12,7 +12,8 @@ function PlacePath(){
     const [CharactersList, setCharactersList] = useState([]);
     const [index, setIndex] = useState(0);
     const [getFilter, setGetFilter] = useState(false);
-    const [getRuler, setGetRuler] = useState("");
+    const [password, setPassword] = useState(false);
+    
 
     const handleChange = () => {
         setGetFilter(!getFilter)
@@ -28,72 +29,13 @@ function PlacePath(){
 
     const slideLeft = () => {
         setIndex(index - 1);
-        setGetRuler("");
     };
 
     const slideRight = () => {
         setIndex(index + 1);
-        setGetRuler("");
     };
   
-    const rulerInfo = () =>{
-        let ruler = CharactersList[index].Ruler
-        let str = "";
-        switch (ruler){
-            case "Принцесса Черепаха":
-                ruler = 1;
-                break;
-            case "Великий Мастер Волшебник":
-                ruler = 2;
-                break;
-            case "Граф Лимонохват":
-                ruler = 3;
-                break;
-            case "Боннибель":
-                ruler = 4;
-                break;
-            case "Принцесса Завтрак":
-                ruler = 5;
-                break;
-            case "Ледяной Король":
-                ruler = 6;
-                break;
-            case "Гроб Гоб Глоб Грод":
-                ruler = 7;
-                break;
-            case "Бог Тусовок":
-                ruler = 8;
-                break;
-            case "Принцесса Пламя (Фиби)":
-                ruler = 9;
-                break;
-            case "Принцесса Пупырчатого Королевства":
-                ruler = 10;
-                break;
-            case "Принцесса Слизь":
-                ruler = 11;
-                break;
-            case "Принцесса Хот-Дог":
-                ruler = 12;
-                break;
-            case "Принцесса Ягода":
-                ruler = 13;
-                break;
-            case "Хансон Абадир":
-                ruler = 14;
-                break;
-        
-            }
-         
-        Axios.get(`http://localhost:3001/ImgRuler=${ruler}`).then((response) => 
-            {
-                str = JSON.stringify(response.data);
-                ruler = str.slice(18)
-                str = ruler;
-                ruler = str.slice(1, -3)
-                setGetRuler(ruler)
-            });
-    }
+    
 
     const funcType = (value) => {
         setIndex(0);
@@ -111,8 +53,27 @@ function PlacePath(){
         }
     }
 
+    const handleChangebutton = () => {
+        let input = prompt("Введите пароль")
+        let str;
+        Axios.get(`http://localhost:3001/administrator`).then((response) => 
+                {
+                    str = JSON.stringify(response.data);
+                    str = str.slice(13)
+                    str = str.slice(1, -3)
+                    if (input === str){
+                      setPassword(true)
+                    }
+                    else{
+                        let no = alert("Неверный пароль!");
+                    }
+    
+                });
+        }
+    
     return(
         <div>
+            <button className="admin-btn" onClick={handleChangebutton}> Я администратор</button>
             <div className="App__container__filteres">
                 <button><img src={filter} alt="Фильтр" onClick={handleChange}></img></button>
             </div>
@@ -149,8 +110,7 @@ function PlacePath(){
                                     Ruler = {CharactersList[index].Ruler}
                                     type = {CharactersList[index].type}
                                     Descript = {CharactersList[index].Descript}
-                                    getRulerInfo = {rulerInfo}
-                                    ruler = {getRuler}
+                                    canChange = {password}
                                     >
                                 </Place>
                                 )

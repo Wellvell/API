@@ -86,7 +86,7 @@ $yellow: rgb(255, 215, 58);
             text-align: center;
             margin-left: 320px;
 
-            button {
+            .rightBtn, .leftBtn {
                 border: none;
                 border-radius: 20px;
                 width: 90px;
@@ -97,6 +97,14 @@ $yellow: rgb(255, 215, 58);
                     width: 64px;
                     height: auto;
                 }
+            }
+
+            .editplacebtn {
+                margin-top: 10px;
+                border: none;
+                border-radius: 20px;
+                width: 90px;
+                height: auto;
             }
         }
 
