@@ -91,6 +91,14 @@ app.put("/placeUpdate", (req, res) => {
 
 ///////////////////////////////////////////////get запросы////////////////////////////////////////////////////////////////////////////////////////////
 
+const fs = require('fs');
+
+const newObject = {
+    name: 'Lera',
+    age: '20'
+}
+
+
 ///////////////////////общие запросы//////////////////////////////////////
 
 app.get('/allcharacters', (req, res) => {
@@ -98,6 +106,21 @@ app.get('/allcharacters', (req, res) => {
         if (err) return console.log(err);
         else{
             res.send(data)
+            let arr = []
+            for (let index in req.body){
+                arr.push(req.body[index])
+            }
+            let jsonData = JSON.stringify(arr, null, 2);
+            console.log(jsonData);
+            const text = data.map(JSON.stringify).reduce((prev, next) => `${prev}\n${next}`);
+            fs.writeFileSync('./result.json', text, 'utf-8'), err => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log("success");
+                }
+            }
         }
     })
 })

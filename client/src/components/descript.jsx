@@ -1,7 +1,7 @@
 
 function Descript(props) {
     return (
-        <div className="descript">
+        <div className="descript-all">
             {props.Descript}
         </div>
     )
