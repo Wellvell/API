@@ -20,11 +20,26 @@ function Minorcharacters(props) {
     }
 
     const updateCharacterName = () => {
-        Axios.put('http://localhost:3001/minorcharactersUpdate', {Season: seasonCharacter, Name: infoName}).then((response) => {
-            alert("Информация об персонаже изменена!")
-
-        })
-    };
+        let promise = new Promise((resolve, reject) => {
+        Axios.put('http://localhost:3001/minorcharactersUpdate', {Season: seasonCharacter, Name: infoName}).then
+        (response => {
+            resolve(response);
+        });
+        setTimeout(() => {
+            reject(new Error("Не удалось внести изменения!"));
+          }, 2000)
+        });
+        promise
+        .then(
+            result => {
+            alert("Информация о месте изменена!")
+            },
+            error => {
+                setSeasonCharacter(props.Season);
+                alert(error);
+                }
+            );
+        };
 
     if(props.canChange){
         return (

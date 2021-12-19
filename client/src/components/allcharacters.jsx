@@ -24,11 +24,28 @@ function Allcharacters(props) {
     }
 
     const updateCharacterName = () => {
-        Axios.put('http://localhost:3001/allcharactersUpdate', {Name: nameCharacter, Sex: sexCharacter, Race: raceCharacter, Image: infoImage}).then((response) => {
-            alert("Информация об персонаже изменена!")
-
-        })
-    };
+        let promise = new Promise((resolve, reject) => {
+        Axios.put('http://localhost:3001/allcharactersUpdate', {Name: nameCharacter, Sex: sexCharacter, Race: raceCharacter, Image: infoImage}).then
+        (response => {
+            resolve(response);
+        });
+        setTimeout(() => {
+            reject(new Error("Не удалось внести изменения!"));
+          }, 2000)
+        });
+        promise
+        .then(
+            result => {
+            alert("Информация о месте изменена!")
+            },
+            error => {
+                setNameCharacter(props.Name);
+                setSexCharacter(props.Sex);
+                setRaceCharacter(props.Race);
+                alert(error);
+                }
+            );
+        };
 
 
     let main = 0;

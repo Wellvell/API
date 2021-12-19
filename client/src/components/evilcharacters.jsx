@@ -20,10 +20,25 @@ function Evils(props) {
     }
 
     const updateCharacterName = () => {
-        Axios.put('http://localhost:3001/evilscharactersUpdate', {Abilities: abilitiesCharacter, Name: infoName}).then((response) => {
-            alert("Информация об персонаже изменена!")
-
-        })
+        let promise = new Promise((resolve, reject) => {
+        Axios.put('http://localhost:3001/evilscharactersUpdate', {Abilities: abilitiesCharacter, Name: infoName}).then
+        (response => {
+            resolve(response);
+        });
+        setTimeout(() => {
+            reject(new Error("Не удалось внести изменения!"));
+          }, 2000)
+    });
+    promise
+    .then(
+        result => {
+        alert("Информация о месте изменена!")
+        },
+        error => {
+            setAbilitiesCharacter(props.props.Abilities);
+            alert(error);
+            }
+        );
     };
 
     if(props.canChange){
