@@ -1,13 +1,14 @@
-import Minorcharacters from './minorcharacters';
+import Evils from './evilcharacters';
 import Axios from 'axios'
 import { useEffect, useState } from 'react';
 import filter from './img/filter.png';
-import './minorcharacters.scss';
 
 function EvilsPath(){
 
     const [CharactersList, setCharactersList] = useState([]);
     const [getFilter, setGetFilter] = useState(false);
+    const [password, setPassword] = useState(false);
+    const [changeName, setChangeName] = useState(false);
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/evils').then((response) => 
@@ -36,9 +37,32 @@ function EvilsPath(){
         }
     }
 
+    const handleChangebutton = () => {
+        let input = prompt("Введите пароль")
+        let str;
+        Axios.get(`http://localhost:3001/administrator`).then((response) => 
+                {
+                    str = JSON.stringify(response.data);
+                    str = str.slice(13)
+                    str = str.slice(1, -3)
+                    if (input === str){
+                      setPassword(true)
+                    }
+                    else{
+                        let no = alert("Неверный пароль!");
+                    }
+    
+                });
+        }
+
+    const letsChange = () =>{
+        setChangeName(true)
+    }
+
 
     return(
         <div>
+            <button className="admin-btn" onClick={handleChangebutton}> Я администратор</button>
             <div className="App__container__filteres">
                 <button><img src={filter} alt="Фильтр" onClick={handleChange}></img></button>
             </div>
@@ -58,12 +82,15 @@ function EvilsPath(){
             {
                 CharactersList &&
                 CharactersList.map((value) =>
-                <Minorcharacters
+                <Evils
                 key = {value.Name}
                 Image = {value.Image}
                 Name = {value.Name}
-                Abilities = {value.Abilities}>
-                </Minorcharacters>
+                Abilities = {value.Abilities}
+                canChange = {password}
+                change = {letsChange}
+                nameChange = {changeName}>   
+                </Evils>
                 )
             }
             </div>

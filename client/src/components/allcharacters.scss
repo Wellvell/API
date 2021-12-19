@@ -1,6 +1,5 @@
 @import "App";
 
-
 .select-container{
     margin-left: 150px;
     margin-top: -30px;
@@ -25,6 +24,7 @@
     z-index: 0;
     -moz-column-break-inside: avoid;
     -webkit-column-break-inside: avoid;
+
     .edit{
         img{
             width: 16px;

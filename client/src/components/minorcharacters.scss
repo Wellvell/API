@@ -1,6 +1,5 @@
 @import "App";
 
-
 .minor-row {
     margin-left: 20%;
     display: flex;
@@ -9,10 +8,19 @@
     z-index: 0;
     -moz-column-break-inside: avoid;
     -webkit-column-break-inside: avoid;
+
+    .edit{
+        img{
+            width: 16px;
+            height: auto;
+            padding: 0px;
+        }
+    }
     img {
         justify-content: flex-start;
         float: right;
-        padding: 20px;
+        height: 300px;
+        width: auto;
     }
 
     &__text {

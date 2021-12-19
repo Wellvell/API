@@ -46,6 +46,19 @@ app.put("/maincharactersUpdate", (req, res) => {
     });
 })
 
+app.put("/evilscharactersUpdate", (req, res) => {
+    const name = req.body.Name;
+    const abilities = req.body.Abilities;
+    db.query("UPDATE villains SET Abilities = ?  WHERE Name = ?", [abilities, name], (err, result) => {
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.send(result);
+        }
+    });
+})
+
 ///////////////////////////////////////////////get запросы////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////общие запросы//////////////////////////////////////
