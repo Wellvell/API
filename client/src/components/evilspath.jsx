@@ -8,7 +8,6 @@ function EvilsPath(){
 
     const [CharactersList, setCharactersList] = useState([]);
     const [getFilter, setGetFilter] = useState(false);
-    const [getAbility, setGetAbility] = useState("0");
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/evils').then((response) => 

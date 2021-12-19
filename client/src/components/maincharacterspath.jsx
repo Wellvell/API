@@ -15,8 +15,7 @@ function MaincharactersPath(){
     const [searchTerm, setSearchTerm] = useState('');
     const [word, setWord] = useState('');
     const [descriptRace, setDescriptRace] = useState("");
-    const [episode1, setEpisode1] = useState([]);
-    const [episode2, setEpisode2] = useState([]);
+    const [password, setPassword] = useState(false);
 
     const handleChange = () => {
         setGetFilter(!getFilter)
@@ -33,15 +32,11 @@ function MaincharactersPath(){
     const slideLeft = () => {
         setIndex(index - 1);
         setDescriptRace("");
-        setEpisode1([]);
-        setEpisode2([]);
     };
 
     const slideRight = () => {
         setIndex(index + 1);
         setDescriptRace("");
-        setEpisode1([]);
-        setEpisode2([]);
     };
 
     const letsSearch = () =>{
@@ -118,55 +113,27 @@ function MaincharactersPath(){
             });
     }
 
-    const epInfo1 = () => {
-        let episode = CharactersList[index].FirstEpisode
-        let counter;
-        if (episode === "Весёлые секреты, Часть 2"){
-            counter = "1";
-        }
-        else if (episode === "Время Бизнеса"){
-            counter = "2";
-        }
-        else if (episode  === "Заварушка на пирушке"){
-            counter = "3";
-        }
-        else if (episode === "Заложники любви"){
-            counter = "4";
-        }
-        else if (episode === "Изгнаны!"){
-            counter = "5";
-        }
-        else if (episode === "Адское пламя"){
-            counter = "0";
-        }
-        else if (episode === "Неладно что-то в Пупырчатом Королевстве"){
-            counter = "6";
-        }
-        Axios.get(`http://localhost:3001/Episode=${counter}`).then((response) => 
-        {
-            setEpisode1(response.data)
-        });
-    }
-
-    const epInfo2 = () => {
-        let episode = CharactersList[index].LastEpisode
-        let counter;
-        if (episode === "Пойдём со мной"){
-            counter = "7";
-        }
-        else if (episode === "Три ведра"){
-            counter = "8";
-        }
-        Axios.get(`http://localhost:3001/Episode=${counter}`).then((response) => 
-        {
-            setEpisode2(response.data)
-        });
-    }
-
+    const handleChangebutton = () => {
+        let input = prompt("Введите пароль")
+        let str;
+        Axios.get(`http://localhost:3001/administrator`).then((response) => 
+                {
+                    str = JSON.stringify(response.data);
+                    str = str.slice(13)
+                    str = str.slice(1, -3)
+                    if (input === str){
+                      setPassword(true)
+                    }
+                    else{
+                        let no = alert("Неверный пароль!");
+                    }
     
-
+                });
+        }
+    
     return(
         <div>
+            <button className="admin-btn" onClick={handleChangebutton}> Я администратор</button>
             <div className="App__container__filteres">
                 <button><img src={filter} alt="Фильтр" onClick={handleChange}></img></button>
             </div>
@@ -204,11 +171,7 @@ function MaincharactersPath(){
                                     LastEpisode = {CharactersList[index].LastEpisode}
                                     getRaceInfo = {raceInfo}
                                     race = {descriptRace}
-                                    getEpInfo1 = {epInfo1}
-                                    episode1 = {episode1}
-                                    getEpInfo2 = {epInfo2}
-                                    episode2 = {episode2}
-                                    >
+                                    canChange = {password}>
                                 </Maincharacters>
                                 )
                             }

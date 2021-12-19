@@ -30,6 +30,22 @@ app.put("/allcharactersUpdate", (req, res) => {
     });
 })
 
+app.put("/maincharactersUpdate", (req, res) => {
+    const name = req.body.Name;
+    const age = req.body.Age;
+    const first = req.body.FirstEpisode;
+    const last = req.body.LastEpisode;
+    const descript = req.body.Descript;
+    db.query("UPDATE maincharacters SET Age = ?, Descript = ?, FirstEpisode = ?, LastEpisode = ? WHERE Name = ?", [age, descript, first, last, name], (err, result) => {
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.send(result);
+        }
+    });
+})
+
 ///////////////////////////////////////////////get запросы////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////общие запросы//////////////////////////////////////

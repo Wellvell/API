@@ -1,5 +1,27 @@
 @import "App";
 
+.edit{
+    button{
+        width: 16px;
+        height: 16px;
+    }
+
+    .edit_img{
+        width: 16px;
+        height: auto;
+        padding: 0px;
+    }
+}
+
+.descript{
+    height: 150px;
+    width: 400px;
+    text-align: start;
+    word-wrap: break-word;
+    margin-right: 120px;
+    
+}
+
 .maindiv{
     margin-top: -10px;
 }
@@ -32,4 +54,9 @@ a{
         position: absolute;
         margin-left: 380px
     }
+}
+
+.inputEp{
+    width: 420px !important;
+    text-align: center;
 }

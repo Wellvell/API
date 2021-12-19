@@ -14,7 +14,6 @@ function AllcharactersPath(){
     const [getDescript, setGetDescript] = useState([]);
     const [password, setPassword] = useState(false);
     const [changeName, setChangeName] = useState(false);
-    const [information, setInformation] = useState("");
 
   const handleChangebutton = () => {
     let input = prompt("Введите пароль")
