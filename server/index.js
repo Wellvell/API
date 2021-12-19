@@ -13,12 +13,29 @@ const db = mysql.createPool({
     password: "Joker4753"
 });
 
+/////////////////////////////////////////////////////////put запросы//////////////////////////////////////////////////////////////////////////////////////////
 
+app.put("/allcharactersUpdate", (req, res) => {
+    const name = req.body.Name;
+    const sex = req.body.Sex;
+    const race = req.body.Race;
+    const image = req.body.Image
+    db.query("UPDATE allcharacters SET Name = ?, Sex = ?, Race = ? WHERE Image = ?", [name, sex, race, image], (err, result) => {
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.send(result);
+        }
+    });
+})
+
+///////////////////////////////////////////////get запросы////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////общие запросы//////////////////////////////////////
 
 app.get('/allcharacters', (req, res) => {
-    db.query("SELECT Name, Image, Category FROM allcharacters", function (err, data) {
+    db.query("SELECT * FROM allcharacters", function (err, data) {
         if (err) return console.log(err);
         else{
             res.send(data)

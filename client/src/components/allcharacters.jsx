@@ -1,5 +1,36 @@
+import Axios  from 'axios';
+import { useState } from 'react';
 import pen from './img/pen.png';
 function Allcharacters(props) {
+    const [nameCharacter, setNameCharacter] = useState(props.Name)
+    const [sexCharacter, setSexCharacter] = useState(props.Sex)
+    const [raceCharacter, setRaceCharacter] = useState(props.Race)
+    const [infoName, setInfoName] = useState("");
+    const [infoImage, setInfoImage] = useState("");
+    const [flag, setFlag] = useState(false);
+
+    const handleChange = () =>{
+        if (!flag){
+            setInfoName(props.Name);
+            setInfoImage(props.Image);
+            setFlag(true);
+        }
+        else{
+            setFlag(false);
+            updateCharacterName();
+            setInfoName("");
+            setInfoImage("");
+        }
+    }
+
+    const updateCharacterName = () => {
+        Axios.put('http://localhost:3001/allcharactersUpdate', {Name: nameCharacter, Sex: sexCharacter, Race: raceCharacter, Image: infoImage}).then((response) => {
+            alert("Имя персонажа изменено!")
+
+        })
+    };
+
+
     let main = 0;
     let minor = 0;
     let ruler = 0;
@@ -26,9 +57,11 @@ function Allcharacters(props) {
                 <div className='character-row'>
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
-                    <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <div className="character-row__text"> 
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="main"> Главный герой </p>
                     </div>
                 </div>
@@ -40,8 +73,10 @@ function Allcharacters(props) {
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
                     <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="minor"> Второстепенный персонаж </p>
                     </div>
                 </div>
@@ -53,8 +88,10 @@ function Allcharacters(props) {
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
                     <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="evil"> Злодей </p>
                     </div>
                 </div>
@@ -66,8 +103,10 @@ function Allcharacters(props) {
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
                     <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="ruler"> Королевская власть </p>
                     </div>
                 </div>
@@ -79,8 +118,10 @@ function Allcharacters(props) {
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
                     <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="main"> Главный герой </p>
                     <p className="ruler"> Королевская власть </p>
                     </div>
@@ -93,8 +134,10 @@ function Allcharacters(props) {
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
                     <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="minor"> Второстепенный персонаж </p>
                     <p className="ruler"> Королевская власть </p>
                     </div>
@@ -107,8 +150,10 @@ function Allcharacters(props) {
                     {/*eslint-disable-next-line*/}
                     <img src={props.Image} alt="Character picture" />
                     <div className="character-row__text">
-                    <p className="name"> {props.Name} </p>
-                    <button className="edit" onClick={props.change}><img src={pen}></img></button>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={nameCharacter} onChange={event => {setNameCharacter(event.target.value)}}/> : <p className="name"> {nameCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Пол: ${sexCharacter}`} onChange={event => {setSexCharacter(event.target.value)}}/> : <p> Пол: {sexCharacter} </p>} </p>
+                    <p> {props.nameChange && infoName===props.Name ? <input className="name-input" type="text" placeholder={`Раса: ${raceCharacter}`} onChange={event => {setRaceCharacter(event.target.value)}}/> : <p> Раса: {raceCharacter} </p>} </p>
+                    <button className="edit" onMouseMove={props.change} onClick={handleChange}><img src={pen}></img></button>
                     <p className="evil"> Злодей </p>
                     <p className="ruler"> Королевская власть </p>
                     </div>

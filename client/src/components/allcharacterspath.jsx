@@ -13,6 +13,8 @@ function AllcharactersPath(){
     const [getRace, setGetRace] = useState("2");
     const [getDescript, setGetDescript] = useState([]);
     const [password, setPassword] = useState(false);
+    const [changeName, setChangeName] = useState(false);
+    const [information, setInformation] = useState("");
 
   const handleChangebutton = () => {
     let input = prompt("Введите пароль")
@@ -25,7 +27,9 @@ function AllcharactersPath(){
                 if (input === str){
                   setPassword(true)
                 }
-                console.log(password);
+                else{
+                    let no = alert("Неверный пароль!");
+                }
 
             });
     }
@@ -96,7 +100,7 @@ function AllcharactersPath(){
     }, [getSex, getRace])
 
     const letsChange = () =>{
-
+        setChangeName(true)
     }
 
 
@@ -153,9 +157,12 @@ function AllcharactersPath(){
                 key = {value.Name}
                 Image = {value.Image}
                 Name = {value.Name}
+                Sex = {value.Sex}
+                Race = {value.Race}
                 Category = {value.Category}
                 canChange = {password}
-                change = {letsChange}>   
+                change = {letsChange}
+                nameChange = {changeName}>   
                 </Allcharacters>
                 )
             }
