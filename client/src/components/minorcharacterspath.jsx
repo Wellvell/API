@@ -9,6 +9,8 @@ function MinorcharactersPath(){
     const [CharactersList, setCharactersList] = useState([]);
     const [getFilter, setGetFilter] = useState(false);
     const [getSeason, setGetSeason] = useState("0");
+    const [password, setPassword] = useState(false);
+    const [changeName, setChangeName] = useState(false);
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/minorcharacters').then((response) => 
@@ -37,9 +39,32 @@ function MinorcharactersPath(){
         }
     }
 
+    const handleChangebutton = () => {
+        let input = prompt("Введите пароль")
+        let str;
+        Axios.get(`http://localhost:3001/administrator`).then((response) => 
+                {
+                    str = JSON.stringify(response.data);
+                    str = str.slice(13)
+                    str = str.slice(1, -3)
+                    if (input === str){
+                      setPassword(true)
+                    }
+                    else{
+                        let no = alert("Неверный пароль!");
+                    }
+    
+                });
+        }
+
+    const letsChange = () =>{
+        setChangeName(true)
+    }
+
 
     return(
         <div>
+            <button className="admin-btn" onClick={handleChangebutton}> Я администратор</button>
             <div className="App__container__filteres">
                 <button><img src={filter} alt="Фильтр" onClick={handleChange}></img></button>
             </div>
@@ -70,7 +95,10 @@ function MinorcharactersPath(){
                 key = {value.Name}
                 Image = {value.Image}
                 Name = {value.Name}
-                Season = {value.Season}>
+                Season = {value.Season}
+                canChange = {password}
+                change = {letsChange}
+                nameChange = {changeName}> 
                 </Minorcharacters>
                 )
             }

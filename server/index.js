@@ -59,6 +59,19 @@ app.put("/evilscharactersUpdate", (req, res) => {
     });
 })
 
+app.put("/minorcharactersUpdate", (req, res) => {
+    const name = req.body.Name;
+    const season = req.body.Season;
+    db.query("UPDATE minorcharacters SET Season = ?  WHERE Name = ?", [season, name], (err, result) => {
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.send(result);
+        }
+    });
+})
+
 ///////////////////////////////////////////////get запросы////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////общие запросы//////////////////////////////////////
