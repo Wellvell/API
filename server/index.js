@@ -93,10 +93,20 @@ app.put("/placeUpdate", (req, res) => {
 
 const fs = require('fs');
 
-const newObject = {
-    name: 'Lera',
-    age: '20'
-}
+const path = require('path');
+const csv = require('csv-parser');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter 
+
+const csvWriter = createCsvWriter({ 
+    path: 'out.csv', 
+    header: [ 
+        {id: 'Name', title: 'Name'}, 
+        {id: 'Sex', title: 'Sex'}, 
+        {id: 'Race', title: 'Race'}, 
+        {id: 'Image', title: 'Image'}, 
+        {id: 'Category', title: 'Category'}, 
+        ] 
+}); 
 
 
 ///////////////////////общие запросы//////////////////////////////////////
@@ -106,6 +116,17 @@ app.get('/allcharacters', (req, res) => {
         if (err) return console.log(err);
         else{
             res.send(data)
+        }
+    })
+})
+
+app.get('/maincharacters', (req, res) => {
+    db.query("SELECT * FROM maincharacters", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
+            csvWriter .writeRecords(data) 
+            .then(() => console.log('The CSV file was written successfully')); 
             let arr = []
             for (let index in req.body){
                 arr.push(req.body[index])
@@ -121,15 +142,6 @@ app.get('/allcharacters', (req, res) => {
                     console.log("success");
                 }
             }
-        }
-    })
-})
-
-app.get('/maincharacters', (req, res) => {
-    db.query("SELECT * FROM maincharacters", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
         }
     })
 })
