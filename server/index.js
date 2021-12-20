@@ -116,15 +116,6 @@ app.get('/allcharacters', (req, res) => {
         if (err) return console.log(err);
         else{
             res.send(data)
-        }
-    })
-})
-
-app.get('/maincharacters', (req, res) => {
-    db.query("SELECT * FROM maincharacters", function (err, data) {
-        if (err) return console.log(err);
-        else{
-            res.send(data)
             csvWriter .writeRecords(data) 
             .then(() => console.log('The CSV file was written successfully')); 
             let arr = []
@@ -142,6 +133,15 @@ app.get('/maincharacters', (req, res) => {
                     console.log("success");
                 }
             }
+        }
+    })
+})
+
+app.get('/maincharacters', (req, res) => {
+    db.query("SELECT * FROM maincharacters", function (err, data) {
+        if (err) return console.log(err);
+        else{
+            res.send(data)
         }
     })
 })
