@@ -109,6 +109,8 @@ const csvWriter = createCsvWriter({
 }); 
 
 
+
+
 ///////////////////////общие запросы//////////////////////////////////////
 
 app.get('/allcharacters', (req, res) => {
@@ -116,23 +118,22 @@ app.get('/allcharacters', (req, res) => {
         if (err) return console.log(err);
         else{
             res.send(data)
-            csvWriter .writeRecords(data) 
-            .then(() => console.log('The CSV file was written successfully')); 
-            let arr = []
-            for (let index in req.body){
-                arr.push(req.body[index])
+            const PDFGenerator = require('pdfkit')
+            let theOutput = new PDFGenerator 
+            theOutput.pipe(fs.createWriteStream('TestDocument.pdf'))
+            let object;
+            let str;
+            for (let i = 0; i < data.length; i++){
+                object = JSON.stringify(data[i].Image);
+                str = object.slice(1,-1);
+                console.log(str)
+                theOutput.text(`Character ${i+1}`, { bold: true,
+                    underline: true,
+                    align: 'center'
+                })
+                theOutput.image(`${str}`, { fit: [250,250], align: 'center' })
             }
-            let jsonData = JSON.stringify(arr, null, 2);
-            console.log(jsonData);
-            const text = data.map(JSON.stringify).reduce((prev, next) => `${prev}\n${next}`);
-            fs.writeFileSync('./result.json', text, 'utf-8'), err => {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    console.log("success");
-                }
-            }
+            theOutput.end()
         }
     })
 })
