@@ -12,7 +12,11 @@ $bej: rgb(252, 201, 146);
 $yellow: rgb(255, 215, 58);
 
 .App {
+    @media screen and (min-width: 1921px) {
+        background-size: 100vw;
+    }
     height: 100vh;
+    width: auto;
     background-image: url("./img/wallp.jpg");
     background-repeat: no-repeat;
     background-position: left top;
@@ -40,7 +44,7 @@ $yellow: rgb(255, 215, 58);
             }
         }
 
-        .admin-btn{
+        .admin-btn {
             font-size: small;
             display: flex;
             position: absolute;
@@ -86,7 +90,8 @@ $yellow: rgb(255, 215, 58);
             text-align: center;
             margin-left: 320px;
 
-            .rightBtn, .leftBtn {
+            .rightBtn,
+            .leftBtn {
                 border: none;
                 border-radius: 20px;
                 width: 90px;
